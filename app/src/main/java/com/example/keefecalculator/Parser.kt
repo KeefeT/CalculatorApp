@@ -48,7 +48,7 @@ class Parser {
     private fun stringToRPN(expression: String): String {
         //send formatted strings like "42 + 42 / ( 2 * 2 )"
         //returns formatted strings like " "
-        var output: String = ""
+        var output = ""
         val stack: ArrayDeque<String> = ArrayDeque<String>()
         val tokens: List<String> = expression.split(' ').filter { it != "" }
 

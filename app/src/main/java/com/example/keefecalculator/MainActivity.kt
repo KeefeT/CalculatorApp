@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             KeefeCalculatorTheme {
-                val parser: Parser = Parser()
+                val parser = Parser()
                 MainCalculatorUI(parser)
             }
         }
