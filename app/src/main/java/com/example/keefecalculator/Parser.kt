@@ -24,8 +24,9 @@ class Parser {
                 } else if (stack.size < 2) {
                     throw IllegalArgumentException("Stack contains too few operands")
                 } else {
-                    val d1 = stack.removeAt(stack.lastIndex)
-                    val d2 = stack.removeAt(stack.lastIndex)
+                    val d1 = stack.removeFirst()
+                    val d2 = stack.removeFirst()
+                    Log.i(TAG, "Performing operation: d1: $d1, d2: $d2, token: $token")
                     stack.add(when (token) {
                         "+" -> d2 + d1
                         "-" -> d2 - d1
@@ -34,12 +35,11 @@ class Parser {
                         else -> d2.pow(d1)
                     })
                 }
-                Log.i(TAG, "Stack contents: ${stack.toString()}")
-                println(stack.toString())
             }
 
             input.value = stack.first().toString()
         } catch (e: Exception) {
+            Log.e(TAG, "Exception: $e")
             input.value = "Err"
         }
     }
@@ -75,6 +75,7 @@ class Parser {
         while (!stack.isEmpty()) {
             output += stack.removeFirst() + " "
         }
+        Log.i(TAG, "RPN string: $output")
         return output
     }
 
@@ -83,7 +84,8 @@ class Parser {
         return when (op) {
             "(" -> 0
             "+", "-" -> 1
-            else -> 2
+            "/", "*" -> 2
+            else -> 3
         }
     }
 

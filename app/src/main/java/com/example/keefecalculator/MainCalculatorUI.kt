@@ -29,7 +29,7 @@ fun MainCalculatorUI(parser: Parser) {
         Spacer(modifier = Modifier.height(250.dp))
         Row {
             //output of calculator
-            Spacer(modifier = Modifier.width(200.dp))
+            Spacer(modifier = Modifier.width(100.dp))
             Text(
                 text = display.value,
                 fontSize = 50.sp,
